@@ -87,6 +87,13 @@ export async function createStore(
   })
 }
 export async function createRegions(container: MedusaContainer) {
+  const regionService = container.resolve(Modules.REGION)
+  const [existingRegion] = await regionService.listRegions()
+
+  if (existingRegion) {
+    return existingRegion
+  }
+
   const {
     result: [region]
   } = await createRegionsWorkflow(container).run({
@@ -96,7 +103,8 @@ export async function createRegions(container: MedusaContainer) {
           name: 'Europe',
           currency_code: 'eur',
           countries,
-          payment_providers: ['pp_system_default']
+          payment_providers: ['pp_system_default'],
+          automatic_taxes: false
         }
       ]
     }

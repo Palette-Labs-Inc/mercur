@@ -90,21 +90,28 @@ cd apps/backend
 # Clone .env.template
 cp .env.template .env
 
+# Option A: Use Docker Compose Postgres (recommended)
+# Start Postgres (exposes 5433 on host)
+yarn db:up
+
+# Set DATABASE_URL in apps/backend/.env to the compose service
+# Note the host is 'localhost' and port is 5433 (maps to container 5432)
+DATABASE_URL=postgres://postgres:postgres@localhost:5433/mercur
+
+# Option B: Use local Postgres
 # In the .env file replace user, password, address and port parameters in the DATABASE_URL variable with your values
 DATABASE_URL=postgres://[user]:[password]@[address]:[port]/$DB_NAME
-# For example:
+# For example (local):
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/$DB_NAME
 
 # Setup database and run migrations
-yarn medusa db:create && yarn medusa db:migrate && yarn run seed
+yarn db:init
 
 # Create admin user
 npx medusa user --email <email> --password <password>
 
-# Go to root folder
+# Go to repo root and start Mercur
 cd ../..
-
-# Start Mercur
 yarn dev
 ```
 
