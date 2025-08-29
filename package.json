@@ -30,7 +30,7 @@
     "build": "turbo run build",
     "format": "turbo run format",
     "lint": "turbo run lint",
-    "codegen": "cd .",
+    "codegen": "turbo run generate:sdk",
     "generate:oas": "turbo run generate:oas"
   },
   "resolutions": {

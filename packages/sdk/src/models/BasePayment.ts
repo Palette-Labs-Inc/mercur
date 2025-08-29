@@ -1,0 +1,70 @@
+/* generated using openapi-typescript-codegen -- do not edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+import type { BaseCapture } from './BaseCapture';
+import type { BaseRefund } from './BaseRefund';
+/**
+ * The payment's details.
+ */
+export type BasePayment = {
+    /**
+     * The payment's ID.
+     */
+    id: string;
+    /**
+     * The payment's amount.
+     */
+    amount: number;
+    /**
+     * The amount authorized of the payment.
+     */
+    authorized_amount?: number;
+    /**
+     * The payment's currency code.
+     */
+    currency_code: string;
+    /**
+     * The ID of the payment provider used to process this payment.
+     */
+    provider_id: string;
+    /**
+     * The payment's data, useful for processing by the payment provider.
+     */
+    data?: Record<string, any>;
+    /**
+     * The date the payment was created.
+     */
+    created_at?: string;
+    /**
+     * The date the payment was updated.
+     */
+    updated_at?: string;
+    /**
+     * The date the payment was captured.
+     */
+    captured_at?: string;
+    /**
+     * The date the payment was canceled.
+     */
+    canceled_at?: string;
+    /**
+     * The captured amount of the payment.
+     */
+    captured_amount?: number;
+    /**
+     * The refunded amount of the payment.
+     */
+    refunded_amount?: number;
+    /**
+     * The details of payment captures.
+     */
+    captures?: Array<BaseCapture>;
+    /**
+     * The details of payment refunds.
+     */
+    refunds?: Array<BaseRefund>;
+    payment_collection?: Record<string, any>;
+    payment_session?: Record<string, any>;
+};
+

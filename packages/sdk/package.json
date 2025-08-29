@@ -1,0 +1,21 @@
+{
+  "name": "@mercurjs/sdk",
+  "version": "0.1.0",
+  "private": true,
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "yarn --cwd ../../apps/backend generate:sdk",
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.7",
+    "typescript": "^5.6.2"
+  }
+}
+

@@ -1,0 +1,35 @@
+/* generated using openapi-typescript-codegen -- do not edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+import type { StorePriceRule } from './StorePriceRule';
+/**
+ * The price's details.
+ */
+export type StorePrice = {
+    /**
+     * The price's ID.
+     */
+    id: string;
+    /**
+     * The price's ISO 2 currency code.
+     */
+    currency_code: string;
+    /**
+     * The price's amount.
+     */
+    amount: number;
+    /**
+     * The minimum quantity required in the cart for the price to apply.
+     */
+    min_quantity: number;
+    /**
+     * The maximum quantity required in the cart for the price to apply.
+     */
+    max_quantity: number;
+    /**
+     * The price's rules.
+     */
+    price_rules?: Array<StorePriceRule>;
+};
+
