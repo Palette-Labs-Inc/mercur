@@ -1,6 +1,7 @@
 "use server"
 
 import { sdk } from "../config"
+import { CartsService, OpenAPI } from "@mercurjs/marketplace-sdk"
 import medusaError from "@/lib/helpers/medusa-error"
 import { HttpTypes } from "@medusajs/types"
 import { revalidatePath, revalidateTag } from "next/cache"
@@ -31,19 +32,19 @@ export async function retrieveCart(cartId?: string) {
     ...(await getAuthHeaders()),
   }
 
-  return await sdk.client
-    .fetch<HttpTypes.StoreCartResponse>(`/store/carts/${id}`, {
-      method: "GET",
-      query: {
-        fields:
-          "*items,*region, *items.product, *items.variant, *items.variant.options, items.variant.options.option.title," +
-          "*items.thumbnail, *items.metadata, +items.total, *promotions, +shipping_methods.name, *items.product.seller" +
-          "",
-      },
-      headers,
-      cache: "no-cache",
-    })
-    .then(({ cart }) => cart)
+  const fields =
+    "*items,*region, *items.product, *items.variant, *items.variant.options, items.variant.options.option.title," +
+    "*items.thumbnail, *items.metadata, +items.total, *promotions, +shipping_methods.name, *items.product.seller"
+
+  OpenAPI.BASE = process.env.MEDUSA_BACKEND_URL as string
+  OpenAPI.HEADERS = async () => headers
+
+  return await CartsService.getCartsId(
+    id,
+    process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY as string,
+    fields
+  )
+    .then((res) => res.cart)
     .catch(() => null)
 }
 
