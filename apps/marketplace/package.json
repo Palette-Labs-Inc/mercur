@@ -40,7 +40,7 @@
     "talkjs": "^0.37.0",
     "uuid": "^11.0.5",
     "zod": "^3.22.4",
-    "@mercurjs/sdk": "*"
+    "@mercurjs/marketplace-sdk": "*"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",

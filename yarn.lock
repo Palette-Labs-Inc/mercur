@@ -6153,7 +6153,7 @@
     require-from-string "^2.0.2"
     uri-js-replace "^1.0.1"
 
-"@redocly/cli@^1.7.0":
+"@redocly/cli@^1.15.0", "@redocly/cli@^1.7.0":
   version "1.34.5"
   resolved "https://registry.yarnpkg.com/@redocly/cli/-/cli-1.34.5.tgz#c5e04915ef35ccd3b09d52f8add524ecc9a784a7"
   integrity sha512-5IEwxs7SGP5KEXjBKLU8Ffdz9by/KqNSeBk6YUVQaGxMXK//uYlTJIPntgUXbo1KAGG2d2q2XF8y4iFz6qNeiw==
@@ -18207,7 +18207,12 @@ zod-validation-error@^3.4.1:
   resolved "https://registry.yarnpkg.com/zod-validation-error/-/zod-validation-error-3.5.3.tgz#85ba33290200d8db9f043621e284f40dddefb7e5"
   integrity sha512-OT5Y8lbUadqVZCsnyFaTQ4/O2mys4tj7PqhdbBCp7McPwvIEKfPtdA6QfPeFQK2/Rz5LgwmAXRJTugBNBi0btw==
 
-zod@3.22.4, zod@3.25.8, zod@^3.22.4:
+zod@3.22.4:
+  version "3.22.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.4.tgz#f31c3a9386f61b1f228af56faa9255e845cf3fff"
+  integrity sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==
+
+zod@^3.22.4:
   version "3.25.8"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.25.8.tgz#36f77c9ade89428c75803b757718eef5a48f92e2"
   integrity sha512-iJPWX8HoZ2VE21VrhHGU9jVo/kVDUQyqM9vF0MxDhW/fp2sAl1eVwGJgiYZdHGiMwQJImXIW80lKk0MnfDxqiQ==

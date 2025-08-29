@@ -31,8 +31,10 @@
     "format": "prettier --write .",
     "lint": "eslint ./src ",
     "lint:fix": "eslint ./src --fix ",
-    "generate:oas": "medusa-oas oas --type combined --paths ./src/api",
-    "generate:sdk": "yarn generate:oas && openapi --input ./combined.oas.json --output ../../packages/sdk/src --client fetch --useUnionTypes"
+    "generate:oas:store": "medusa-oas oas --type store --paths ./src/api/store --paths ./src/api/openapi/store --paths ./src/api/openapi/vendor --out-dir ./oas",
+    "prune:oas:store": "redocly bundle ./oas/store.oas.json -o ./oas/store.pruned.oas.json --remove-unused-components",
+    "sanitize:oas:store": "node ./scripts/sanitize-oas.js ./oas/store.pruned.oas.json ./oas/store.pruned.sanitized.oas.json",
+    "generate:sdk:store": "rm -rf ../../packages/marketplace-sdk/src && yarn generate:oas:store && yarn prune:oas:store && yarn sanitize:oas:store && openapi --input ./oas/store.pruned.sanitized.oas.json --output ../../packages/marketplace-sdk/src --client fetch --useUnionTypes"
   },
   "dependencies": {
     "@medusajs/admin-sdk": "2.8.6",
@@ -93,7 +95,8 @@
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.15.0",
     "vite": "^5.2.11",
-    "openapi-typescript-codegen": "^0.29.0"
+    "openapi-typescript-codegen": "^0.29.0",
+    "@redocly/cli": "^1.15.0"
   },
   "engines": {
     "node": ">=20"
